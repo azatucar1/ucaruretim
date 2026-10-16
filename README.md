@@ -22,6 +22,16 @@ Satış ekibinin ürün koduyla üretim talebi açması; Narin Hanım'ın üreti
 
 Depodaki `apps/api/.env.example` ve `apps/web/.env.example` dosyalarını örnek alıp ayrı `.env` dosyaları hazırlayın. Geliştirme sırasında iki tarafı birlikte çalıştırmak için:
 
+Windows PowerShell:
+```powershell
+Copy-Item apps/api/.env.example apps/api/.env
+Copy-Item apps/web/.env.example apps/web/.env
+```
+
+**Başlangıçta her iki taraf da DEMO_MODE=true olmalıdır.** Demo erişimi yalnızca localhost üzerinden açılır. Demo rolü ekranın sağ üstünden değiştirilir; örnek stok kodları ORNEK-001, ORNEK-002 ve ORNEK-003'tür.
+
+Devamında:
+
 ```bash
 npm install
 npm run dev
@@ -47,3 +57,9 @@ Veritabanı tabloları için `supabase/migrations/001_initial.sql` dosyasını S
 ## Geliştirme notları
 
 Proje aşamalı ilerler. İlk öncelik çalışan talep ekranı ve audit kaydı, ardından gerçek Uyumsoft alan eşleştirmesi ve üretim miktarı kurallarının netleştirilmesidir.
+
+## Sonraki adımlar
+
+- Gerçek endpoint ve yanıt eşleştirmesi: [Uyumsoft entegrasyonu](docs/UYUMSOFT_INTEGRATION.md)
+- Kabul senaryoları: [Test planı](docs/TEST_PLAN.md)
+- Aşamalar: [Yol haritası](docs/ROADMAP.md)
