@@ -1,0 +1,29 @@
+name: Verify Vercel readiness
+
+on:
+  push:
+    branches: [fix/vercel-deployment-readiness]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm test
+      - run: node --check api/index.js && node --check apps/api/src/index.js
+      - run: npm run build
+      - name: Validate deployment configuration
+        run: |
+          node --input-type=module -e "import fs from 'node:fs'; import assert from 'node:assert/strict'; const c=JSON.parse(fs.readFileSync('vercel.json','utf8')); assert.equal(c.outputDirectory,'apps/web/dist'); assert.equal(c.rewrites[0].destination,'/api/index'); assert.equal(c.rewrites[1].destination,'/index.html'); assert.ok(fs.existsSync('apps/web/dist/index.html'));"
