@@ -1,0 +1,18 @@
+{
+  "name": "ucar-uretim",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB \"npm run dev -w @ucar/api\" \"npm run dev -w @ucar/web\"",
+    "build": "npm run build -w @ucar/web",
+    "test": "node --test apps/api/test/*.test.js",
+    "start": "npm run start -w @ucar/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
