@@ -127,6 +127,12 @@ app.use((error, _req, res, _next) => {
   res.status(500).json({ error: 'Sunucu işlemi tamamlayamadı. API kayıtlarını kontrol edin.' });
 });
 
-app.listen(config.port, config.demo ? '127.0.0.1' : '0.0.0.0', () => {
-  console.log('Uçar Üretim API http://localhost:' + config.port + (config.demo ? ' (DEMO)' : ''));
-});
+// Vercel manages the HTTP listener for serverless functions.
+// Keep the existing standalone Node server behavior for local use.
+if (!process.env.VERCEL) {
+  app.listen(config.port, config.demo ? '127.0.0.1' : '0.0.0.0', () => {
+    console.log('Uçar Üretim API http://localhost:' + config.port + (config.demo ? ' (DEMO)' : ''));
+  });
+}
+
+export default app;
