@@ -80,8 +80,8 @@ app.post('/api/requests', handle(async (req, res) => {
   const insight = await lookupProduct(input.product_code);
   const velocity = insight?.velocity || 'unknown';
 
-  // Otomatik onay özelliği ancak doğrulanmış gerçek entegrasyon ve açık ayar ile etkinleşir.
-  const autoApproved = !config.demo && config.autoApproveGreen && isUyumsoftConfigured() && velocity === 'green';
+  // Gerçek veri kuralları doğrulanana kadar otomatik onay yapılmaz.
+  const autoApproved = false;
   const row = await insertRequest({
     product_code: input.product_code,
     product_name: insight?.name || input.product_name || '',

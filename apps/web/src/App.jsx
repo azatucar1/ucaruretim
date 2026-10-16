@@ -14,7 +14,7 @@ const supabase = !DEMO_MODE && SUPABASE_URL && SUPABASE_ANON_KEY
   ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
 const roleOptions = [
-  { value: 'sales', label: 'Satış (Naif / Abdül)' },
+  { value: 'sales', label: 'Satış personeli' },
   { value: 'production', label: 'Üretim (Narin Hanım)' },
   { value: 'manager', label: 'Yönetici' }
 ];
@@ -298,7 +298,7 @@ function Integrations({ health, demo }) {
       <p>Uçar Üretim'in veri kaynakları ve bağlantı hazırlıkları.</p></div></div>
     <div className="connection-grid">
       <div className="panel connection-card"><span className="connection-icon"><Database size={24} /></span><h2>Supabase</h2>
-        <p>Üretim talepleri, kullanıcı rollerı, olay geçmişi ve onay kayıtları.</p>
+        <p>Üretim talepleri, kullanıcı rolleri, olay geçmişi ve onay kayıtları.</p>
         <div className="connection-status"><span className={'status-indicator ' + (demo ? 'warn' : health?.databaseConfigured ? 'success' : 'warn')} />
           {demo ? 'Demo: Geçici kayıtlar' : (health?.databaseConfigured ? 'Ayarlar tanımlı, bağlantı testi gerekli' : 'Bağlantı ayarları bekleniyor')}</div></div>
       <div className="panel connection-card"><span className="connection-icon"><TrendingUp size={24} /></span><h2>Uyumsoft</h2>
