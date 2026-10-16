@@ -63,3 +63,11 @@ Proje aşamalı ilerler. İlk öncelik çalışan talep ekranı ve audit kaydı,
 - Gerçek endpoint ve yanıt eşleştirmesi: [Uyumsoft entegrasyonu](docs/UYUMSOFT_INTEGRATION.md)
 - Kabul senaryoları: [Test planı](docs/TEST_PLAN.md)
 - Aşamalar: [Yol haritası](docs/ROADMAP.md)
+
+## Supabase ayrımı
+
+- UCARuretim: Supabase proje referansı lyhexcavqlmvahhabbtr (bu depo).
+- UCARmobil: wckrfckyytacfopugpgz (ayrı proje, değiştirilmedi).
+- UCARuretim veritabanında profiles, production_requests ve production_events tabloları oluşturuldu.
+- Şifre/token bilgileri GitHub'a yazılmaz; ayrı sunucu ortam değişkenlerinde saklanır.
+- Uyumsoft servisleri ve eksikler: docs/UYUMSOFT_SWAGGER_ANALYSIS.md.
